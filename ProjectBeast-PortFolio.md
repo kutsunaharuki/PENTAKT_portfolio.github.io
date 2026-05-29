@@ -341,7 +341,7 @@ Xボタンを押すと全種類の音量とノブ位置を初期値（0.1）に�
 
 ## **CountDown**  
 
-<img src="CountDown.gif" alt="CountDown" width="600" height="400">
+<img src="countDown.gif" alt="countDown" width="600" height="400">
 
 インゲームが即座に開始されないよう、カウントダウンを実装しました。  
 プレイヤーにゲームスタートを意識させ、ゲームが始まるワクワク感を演出しています。  
