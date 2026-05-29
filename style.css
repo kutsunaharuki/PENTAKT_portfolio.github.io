@@ -1,0 +1,240 @@
+@charset "utf-8";
+
+/* ==========================================================================
+   1. 全体設定・カラーパレット（氷と海の世界観）
+   ========================================================================== */
+:root {
+  --bg-main: #f0f7fa;          /* 雪原をイメージした薄いブルーグレー */
+  --bg-card: #ffffff;          /* コンテンツエリアの白 */
+  --text-main: #2c3e50;        /* 視認性の高いディープネイビー */
+  --text-muted: #7f8c8d;       /* 補足テキスト用のグレー */
+  --accent-ice: #3498db;       /* 爽やかなペンギンの海ブルー */
+  --accent-deep: #2980b9;      /* 深海のアクアブルー */
+  --accent-aurora: #2ecc71;    /* 起床タイマー（緑）を意識したアクセント */
+  --border-color: #d6e4ed;     /* 氷の境界線をイメージした淡い水色 */
+  --font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  font-family: var(--font-family);
+  line-height: 1.7;
+  letter-spacing: 0.03em;
+  margin: 0;
+  padding: 40px 20px;
+}
+
+/* 画面全体の最大幅を制限して読みやすく */
+.markdown-body, body {
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: var(--bg-card);
+  padding: 50px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(174, 207, 224, 0.3);
+}
+
+/* ==========================================================================
+   2. タイトル・見出し（氷のブロックや鋭さをイメージ）
+   ========================================================================== */
+h1, h2, h3, h4 {
+  color: var(--accent-deep);
+  font-weight: 700;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+/* メインタイトル */
+h1 {
+  font-size: 2.2rem;
+  text-align: center;
+  padding-bottom: 15px;
+  margin-top: 40px;
+  color: #1a365d;
+  position: relative;
+}
+
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent-ice), var(--accent-aurora));
+  border-radius: 2px;
+}
+
+/* 各セクションの区切り見出し */
+h2 {
+  font-size: 1.6rem;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  padding-left: 15px;
+  border-left: 6px solid var(--accent-ice);
+  background: linear-gradient(90deg, rgba(52, 152, 219, 0.1), transparent);
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border-radius: 0 4px 4px 0;
+}
+
+/* 小見出し */
+h3 {
+  font-size: 1.25rem;
+  margin-top: 30px;
+  color: #2c3e50;
+  display: flex;
+  align-items: center;
+}
+
+h3::before {
+  content: '◆';
+  color: var(--accent-ice);
+  font-size: 0.9rem;
+  margin-right: 8px;
+}
+
+/* ==========================================================================
+   3. リンク・目次・リスト
+   ========================================================================== */
+a {
+  color: var(--accent-ice);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--accent-deep);
+  text-decoration: underline;
+}
+
+/* 目次部分のスタイリング */
+ul {
+  padding-left: 20px;
+}
+
+li {
+  margin-bottom: 8px;
+}
+
+/* 箇条書き（アピールポイントなど）の強調 */
+li strong {
+  color: var(--accent-deep);
+}
+
+/* ==========================================================================
+   4. テーブル（自己紹介・作品概要）
+   ========================================================================== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 12px 16px;
+  text-align: left;
+}
+
+th {
+  background-color: var(--accent-ice);
+  color: white;
+  font-weight: 600;
+}
+
+td {
+  border-bottom: 1px solid var(--border-color);
+  background-color: #fafbfc;
+}
+
+/* 左側の項目列を目立たせる */
+td:first-child {
+  font-weight: bold;
+  color: #34495e;
+  width: 25%;
+  background-color: #f4f8fa;
+  border-right: 1px solid var(--border-color);
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+/* ==========================================================================
+   5. コードブロック・シンタックス（C++やHLSLの美しさ）
+   ========================================================================== */
+code {
+  font-family: 'Consolas', 'Courier New', Courier, monospace;
+  background-color: #f4f7f9;
+  color: #e06c75; /* インラインコードの目立つ色 */
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+pre {
+  background-color: #1e252b; /* ダークテーマでコードの視認性を向上 */
+  padding: 20px;
+  border-radius: 8px;
+  overflow-x: auto;
+  border-left: 4px solid var(--accent-ice);
+  margin: 20px 0;
+}
+
+pre code {
+  background-color: transparent;
+  color: #abb2bf; /* エディタ風の白〜グレー */
+  padding: 0;
+  font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   6. 画像・GIFアニメーション（UI確認の主役たち）
+   ========================================================================== */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 20px auto;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(160, 180, 200, 0.4);
+  border: 3px solid #ffffff;
+  outline: 1px solid var(--border-color);
+}
+
+/* 横並び画像（Easingなど）のテーブル内画像調整 */
+table img {
+  margin: 5px auto;
+  box-shadow: none;
+  border: none;
+  outline: none;
+}
+
+/* ==========================================================================
+   7. 装飾（区切り線やその他リフレッシュ）
+   ========================================================================== */
+hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+  margin: 40px 0;
+}
+
+/* 「範囲内」「範囲外」の文字など中央揃えエリア */
+div[align="center"] {
+  margin-top: 30px;
+}
+
+div[align="center"] h3 {
+  justify-content: center;
+}
+div[align="center"] h3::before {
+  display: none; /* 中央揃えの時はインジケータを消す */
+}

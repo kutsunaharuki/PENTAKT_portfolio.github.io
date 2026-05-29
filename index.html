@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ProjectBeast-PortFolio.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> or <div class="page"></div> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<link rel="stylesheet" href="style.css">
+<br>
+<h1 id="ゲームプログラマーポートフォリオ"><strong>ゲームプログラマーポートフォリオ</strong></h1>
+<br>
+<br>
+<h1 id="目次">目次</h1>
+<ul>
+<li><a href="#1-%E8%87%AA%E5%B7%B1%E7%B4%B9%E4%BB%8B"><strong>1. 自己紹介</strong></a></li>
+<li><a href="#2-%E3%82%B2%E3%83%BC%E3%83%A0%E7%B4%B9%E4%BB%8B"><strong>2. ゲーム紹介</strong></a></li>
+<li><a href="#3-%E4%BD%9C%E5%93%81%E6%A6%82%E8%A6%81"><strong>3. 作品概要</strong></a></li>
+<li><a href="#4-%E6%8B%85%E5%BD%93%E3%82%B3%E3%83%BC%E3%83%89"><strong>4. 担当コード</strong></a></li>
+<li><a href="#5-%E6%8A%80%E8%A1%93%E7%9A%84%E3%82%A2%E3%83%94%E3%83%BC%E3%83%AB"><strong>5. 技術的アピール</strong></a>
+<ul>
+<li>UIパーツとLayout &amp; Menuの構造</li>
+<li>UIAnimation &amp; Curve</li>
+<li>UIAnimationSeqeunce</li>
+<li>CircleGauge</li>
+</ul>
+</li>
+<li><a href="#6-UI%E3%81%AE%E3%81%93%E3%81%A0%E3%82%8F%E3%82%8A%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88"><strong>6. UIのこだわりポイント</strong></a>
+<ul>
+<li>MiniMap</li>
+<li>SoundOption</li>
+<li>CountDown
+<br>
+<br></li>
+</ul>
+</li>
+</ul>
+<h2 id="1-自己紹介"><strong>1. 自己紹介</strong></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">項目</th>
+<th style="text-align:left">詳細</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>名前</strong></td>
+<td style="text-align:left">忽那 悠生(くつな はるき)</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>学校</strong></td>
+<td style="text-align:left">河原電子ビジネス専門学校　ゲームクリエイター科</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>メール</strong></td>
+<td style="text-align:left"><strong>ca01254007@st.kawahara.ac.jp</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="自己pr"><strong>自己PR</strong></h3>
+<img src="profile1.jpg" alt="自分の写真" width="400">
+<p>ゲーム制作への熱量には自信があります。平日も遅くまで制作を続けるほどゲームづくりが好きで、能動的に動くことを大切にしています。言われたことをこなすだけでなく、自分から課題を見つけて取り組む姿勢を持っています。</p>
+<ul>
+<li><strong>オンオフの切り替えが得意</strong>　趣味のサッカーやバスケなどスポーツで気分をリフレッシュすることで、制作に向かうときは全力で集中できます。</li>
+<li><strong>コミュニケーション力</strong>　初対面の相手でも物怖じせず話せるため、チーム制作でも積極的に意思疎通を図れます。</li>
+<li><strong>好きなゲームはアクション</strong>　「Ghost of Tsushima」のような没入感のある体験に強く惹かれます。プレイヤーとして感じたゲームの面白さをそのまま自分の制作に活かしたいと思い、日々プログラミングに取り組んでいます。</li>
+</ul>
+<hr>
+<br>
+<br>
+<h2 id="2-作品概要"><strong>2. 作品概要</strong></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">項目</th>
+<th style="text-align:left">内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>タイトル</strong></td>
+<td style="text-align:left">PENTAKT(ペンタクト)</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>ジャンル</strong></td>
+<td style="text-align:left">3Dアクションゲーム</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>制作人数</strong></td>
+<td style="text-align:left">4人</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>制作期間</strong></td>
+<td style="text-align:left">2026年4月 ~ 現在</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>プレイ人数</strong></td>
+<td style="text-align:left">1人</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>対応ハード</strong></td>
+<td style="text-align:left">PC(Windouws11) / Xbox コントローラー</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>使用言語</strong></td>
+<td style="text-align:left">C++</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>エンジン</strong></td>
+<td style="text-align:left">BeastEngine(学内製エンジン (k2EngineLow) / DirectX12) / Visual Studio 2026 / VisualStudio CodeAdobe / Pthoshop 2026</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>仕様ツール</strong></td>
+<td style="text-align:left">3dsMax / Effekseer / GitHub / Fork</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>GitHub URL</strong></td>
+<td style="text-align:left">https://github.com/TakebayashiNaoya/ProjectBeast</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a href="#%E7%9B%AE%E6%AC%A1">目次に戻る</a>
+<br></p>
+<h2 id="3-ゲーム紹介"><strong>3. ゲーム紹介</strong></h2>
+<p>「たくさん救いたい、でも見つかりたくない！」天敵の猛追を切り抜ける、ハイリスク・ハイリターンな3Dチェイスアクション！
+本作は、親ペンギンを操作し、制限時間内にフィールド上にはぐれた子ペンギンたちを救出してハイスコアを目指す3Dアクションゲームです。
+【本作のウリ：可愛さと煩わしさが生むジレンマ】救出した子ペンギンたちは親の後ろをゾロゾロとついてきます。集めるほどに見ためは愛らしくなりますが、天敵「シロクマ」に見つかるリスクや、引き連れる煩わしさ（コントロールの難しさ）が増大していきます。
+【ハイスコアを狙う、スリリングなアチーブメントシステム】単に逃げるだけでなく、「あえて眠っているシロクマを起こす」「複数頭のシロクマにあえて追われる」といった、危険な条件（アチーブメント）を達成するほどスコアが跳ね上がります。安全地帯である「かまくら」すらもシロクマに破壊される極限状態の中、極限の「欲」と「割り切り」の立ち回りが試されるゲームです。</p>
+<hr>
+<br>
+<br>
+<h1 id="4-担当コード"><strong>4. 担当コード</strong></h1>
+<h3 id="ui"><strong>UI</strong></h3>
+<ul>
+<li><strong>UIParts</strong></li>
+<li><strong>MenuBase</strong>
+<ul>
+<li>TitleEventMenu</li>
+<li>SoundOptionMenu</li>
+<li>CountDownMenu</li>
+<li>MiniMapMenu</li>
+<li>SearchMenu</li>
+<li>PauseScreenMenu</li>
+<li>EnemySleepingMenu</li>
+<li>PBWakingUpTimerMenu</li>
+<li>InGameTimerMenu</li>
+</ul>
+</li>
+<li><strong>Layout</strong></li>
+<li><strong>UIAnimationTypes</strong></li>
+<li><strong>Types</strong></li>
+<li><strong>UIAnimation</strong>
+<ul>
+<li>UIAnimationParameter</li>
+<li>UIAnimationFactory</li>
+<li>UIAnimation</li>
+</ul>
+</li>
+<li><strong>UIStatus</strong>
+<ul>
+<li>SearchStatus</li>
+</ul>
+</li>
+<li><strong>UIAnimationStatus</strong>
+<ul>
+<li>PBWakingUpTimerAnimStatus</li>
+</ul>
+</li>
+<li><strong>UIAnimationParameter</strong>
+<ul>
+<li>MasterPBWakingUpTimerParameter</li>
+<li>SearchParameter</li>
+</ul>
+</li>
+</ul>
+<h3 id="util"><strong>Util</strong></h3>
+<ul>
+<li>Curve</li>
+</ul>
+<h3 id="shader"><strong>Shader</strong></h3>
+<ul>
+<li>Circlegauge</li>
+</ul>
+<hr>
+<br>
+<h1 id="5-技術的アピール"><strong>5. 技術的アピール</strong></h1>
+<h2 id="uiパーツとlayout--menuの構造"><strong>UIパーツとLayout &amp; Menuの構造</strong></h2>
+<p>UIの配置・スケール・カラーといった静的な情報はすべてJSON側に持たせており、<code>Layout</code>クラスがそれをパース（変換）して<code>UICanvas</code>に<code>UIParts</code>を生成する機構になっています。MVPパターンを用いて、UIが背負う責務を分離する設計にしました。</p>
+<p><strong>① 外部ファイル（JSON）でUI構築が可能</strong><br>
+UIの配置・サイズ・カラーといったパラメーターはすべてJSONで管理しています。<code>InGameTimer.json</code>を例にすると、<code>UIIcon</code>や<code>UIDigit</code>といったパーツの種類・座標・スケール・色をJSON上で宣言するだけで、<code>Layout::Reload()</code>が自動的に<code>UICanvas</code>へパーツを生成します。プログラマー以外のメンバーもJSONを編集するだけでUIを調整できる構造です。</p>
+<p><strong>② ホットリロードによる高速な開発イテレーション</strong><br>
+<code>Layout::Update()</code>内では<code>stat()</code>でJSONファイルのタイムスタンプを監視しており、ファイルが更新されると自動で<code>Reload()</code>が呼ばれます。デバッグ実行を止めてコードを書き直して再ビルドする手間がなく、ゲームを動かしたままUIの見た目を即座に確認できます。なお、この機能は<code>#ifdef APP_DEBUG</code>のプリプロセッサで管理されており、リリースビルドには余分なオーバーヘッドが生じない設計になっています。</p>
+<p><strong>③ ホットリロード時の差分更新</strong><br>
+<code>Reload()</code>では既存のUIキーが存在する場合に<code>UnregisterUI</code> → <code>RemoveUI</code> → 再生成という手順を踏んでいます。全破棄・全再生成ではなく差分ベースで更新しているため、ホットリロード時の処理を最小限に抑えています。</p>
+<p><strong>④ Menuの継承による拡張性と統一された作り方</strong><br>
+<code>MenuBase</code>を継承して<code>InitializeLogic()</code>をオーバーライドするだけで、任意のUIロジックを実装できます。<code>InGameTimerMenu</code>がその一例で、タイマーの数字更新・時計の回転アニメーション・点滅処理といったゲーム固有のロジックを、ベースクラスの仕組みに沿って記述しています。決まった作り方があるため、チーム内で初めてUIを担当するメンバーでも迷わず実装できます。</p>
+<p><strong>⑤ MVPパターンによる責務の分離と単体テストのしやすさ</strong><br>
+<code>Layout</code>（モデル）がJSONを管理し、<code>MenuBase</code>派生クラス（プレゼンター）がロジックを担い、<code>UICanvas</code>（ビュー）が描画を担うという形で責務を分離しています。UIロジック単体をデバッグシーンで動かすだけで動作確認できるため、ゲーム本編の進行とは切り離した確認・デバッグが可能です。</p>
+<img src="mvp_pattern_ui_system.svg" alt="MBPパターン" width="600" height="600">
+<hr>
+<br>
+<h2 id="uianimation--curve"><strong>UIAnimation &amp; Curve</strong></h2>
+<p>Curve（イージング曲線）を用いた汎用テンプレートにすることで、<code>float</code>・<code>Vector2</code>・<code>Vector3</code>・<code>Vector4</code>といったあらゆる型に対して手軽にイージングアニメーションをつけられる設計にしています。将来的に新しい型に対応させたいときもテンプレートを流用するだけで済みます。<br>
+また、細かなアニメーションを複数JSONで管理するのは煩雑になるため、複数の動きを一つにまとめた特殊イージングとして実装できるよう工夫しています。</p>
+<img src="UIAnimation_class_diagram_v2.svg" alt="UIAnimationBase" width="600" height="600">
+<img src="UIAnimation_inheritance_tree.svg" alt="Curve" width="600" height="600">
+<p><strong>① アニメーション処理の共通化</strong><br>
+<code>UIAnimationBase</code>を基底クラスとして<code>UIColorAnimation</code>・<code>UIScaleAnimation</code>・<code>UITranslateAnimation</code>・<code>UIRotationAnimation</code>など、用途別の具象クラスに分けています。どのアニメーションも<code>Play()</code>・<code>Stop()</code>・<code>Update()</code>・<code>IsPlayAnimation()</code>という共通インターフェースで扱えるため、誰でも同じ作り方でUIアニメーションを実装できます。</p>
+<p><strong>② アニメーション情報のJSON外部ファイル化</strong><br>
+アニメーションの開始値・終了値・再生時間・イージング種類・ループモードといったパラメーターをすべてJSONで管理しています。プログラムにパラメーターを直書きしないため、JSONの構造は直感的に読み書きでき、プログラマー以外のメンバーでも調整が可能です。</p>
+<p><strong>③ ファクトリーパターンによるJSON駆動のアニメーション生成</strong><br>
+<code>UIAnimationFactory::Attach&lt;T&gt;(target, key)</code>を呼ぶだけで、JSONに定義したパラメーターからアニメーションインスタンスを生成してUIに登録できます。ファクトリーは<code>UIAnimation.h</code>と<code>UIAnimationParameter.h</code>の両方を知っている一方で、両者はお互いを知らない構造になっており、循環依存を防いでいます。</p>
+<p><strong>④ テンプレートによるカーブ処理の共通化</strong><br>
+<code>Curve&lt;T&gt;</code>は型に依らず「開始値→終了値へ時間をかけて補間する」という処理を一つのテンプレートで表現しています。<code>float</code>でも<code>Vector3</code>でも補間ロジックは同じため、型ごとに同じコードを書き直す必要がなく、<code>FloatCurve</code>・<code>Vector2Curve</code>・<code>Vector3Curve</code>・<code>Vector4Curve</code>という型エイリアスで直感的に使えます。</p>
+<p><strong>⑤ 豊富なイージングとループモードの対応</strong><br>
+<code>EasingType</code>として<code>Linear</code>・<code>EaseIn</code>・<code>EaseOut</code>・<code>EaseInOut</code>に加え、終点で跳ねる<code>BounceOut</code>・始点で跳ねる<code>BounceIn</code>を実装しています。<code>LoopMode</code>も<code>Once</code>（片道）・<code>Loop</code>（周回）・<code>PingPong</code>（往復）の3種類に対応しており、UIの見た目にこだわった演出を柔軟に表現できます。</p>
+<table>
+  <tr>
+    <td><img src="easing_Linear.svg" width="75%" height="75%"></td>
+    <td><img src="easing_EaseIn.svg" width="75%" height="75%"></td>
+    <td><img src="easing_EaseOut.svg" width="75%" height="75%"></td>
+  </tr>
+  <tr>
+    <td><img src="easing_EaseInOut.svg" width="75%" height="75%"></td>
+    <td><img src="easing_BounceOut.svg" width="75%" height="75%"></td>
+    <td><img src="easing_BounceIn.svg" width="75%" height="75%"></td>
+  </tr>
+</table>
+<hr>
+<br>
+<h2 id="uianimationsequence"><strong>UIAnimationSequence</strong></h2>
+<p><code>UIAnimationSequence</code>は、ビルダーパターンのメソッドチェーン（Fluent Interface）スタイルを適用しています。<code>.Add()</code>・<code>.OnComplete()</code>が<code>return *this;</code>で自身の参照を返すことで、呼び出し側が<code>.Add().Add().OnComplete().Play()</code>と連鎖記述できます。<br>
+アニメーションを連続再生できない状況を解消するために実装し、使いやすい形を模索した結果このデザインパターンに辿り着きました。</p>
+<p><strong>① メソッドチェーンによる可読性の高い記述</strong><br>
+<code>.Add().Add().OnComplete().Play()</code>という連鎖記述により、アニメーションの流れが上から順に読み取れます。個別に状態管理する変数を増やさずに、複数アニメーションの順序を一箇所でまとめて表現できます。</p>
+<p><strong>② ステップごとのコールバック設計</strong><br>
+各ステップには<code>onStart</code>（開始時）と<code>onComplete</code>（終了時）のコールバックを個別に設定できます。実際にアニメーション中にSEを再生する場面で活用しており、アニメーション処理とゲームロジックを自然につなぎ合わせられる設計です。シーケンス全体の完了時にも<code>OnComplete()</code>でコールバックを設定できます。</p>
+<p><strong>③ <code>delayBefore</code>によるステップ間の待機</strong><br>
+<code>Add(key, delayBefore)</code>で各ステップ開始前の待機時間を指定できます。<code>Update()</code>内でタイマーをカウントダウンし、経過後に次のステップを開始する仕組みになっており、アニメーション間に間を持たせた演出が簡単に実現できます。</p>
+<p><strong>④ <code>UIBase</code>を対象とした汎用設計</strong><br>
+<code>Play(UIBase* target)</code>で対象UIを受け取る設計のため、<code>UIBase</code>を継承したどのUIパーツに対しても使用できます。シーケンスとUIが分離しているため、同じシーケンス定義を別のUIに再利用することも可能です。</p>
+<p><strong>⑤ アニメーションが見つからない場合のスキップ処理</strong><br>
+<code>StartCurrentStep()</code>内でアニメーションが見つからない場合は自動的に次のステップへ進みます。未登録キーを指定しても止まらずに続行できるため、実装途中でも安全に動作確認ができます。</p>
+<hr>
+<br>
+<h2 id="circlegauge"><strong>CircleGauge</strong></h2>
+<img src="PBWakingUpTimer.gif" alt="PBWakingUpTimer" width="600" height="400">
+<p>円形ゲージを使いたい場面があったため、初めてピクセルシェーダーに挑戦しました。<br>
+「円にしたい場所以外はピクセルシェーダーで色を塗らなければ実現できる」という発想を起点に設計し、しろくまの起床タイマーUIで実際に活用しています。</p>
+<p><strong>① 早期<code>discard</code>による最適化</strong><br>
+円環の外側のピクセルは<code>discard</code>で即座に処理を打ち切っています。描画が不要なピクセルで重い角度計算（<code>atan2</code>）を実行しないようにしています。</p>
+<p><strong>② <code>smoothstep</code>を用いたなめらかな見た目</strong><br>
+円環の内側・外側の境界に<code>smoothstep</code>を使ってわずかにぼかしを加えています。<code>step()</code>だとギザギザ（ジャギー）が出てしまうため、なめらかな円環になるよう工夫しています。</p>
+<p><strong>③ C++側から柔軟に制御できる設計</strong><br>
+開始位置・終了位置・回転角度をC++側からシェーダーに渡す設計にしています。ゲームの状態に合わせてゲージの進捗や向きをリアルタイムに変えられます。</p>
+<pre class="hljs"><code><div>   <span class="hljs-comment">// ① 構造体で値をまとめる。</span>
+   <span class="hljs-keyword">struct</span> <span class="hljs-title class_">GaugeConstantBuffer</span>
+   {
+      <span class="hljs-type">float</span> startProgress;   <span class="hljs-comment">// ゲージの開始位置 (0.0f ~ 1.0f)</span>
+      <span class="hljs-type">float</span> endProgress;     <span class="hljs-comment">// ゲージの終了位置 (0.0f ~ 1.0f)</span>
+      <span class="hljs-type">float</span> innerRadius;     <span class="hljs-comment">// 円環の内径 (UV座標)</span>
+      <span class="hljs-type">float</span> outerRadius;     <span class="hljs-comment">// 円環の外径 (UV座標)</span>
+      <span class="hljs-type">float</span> rotationAngle;   <span class="hljs-comment">// 回転オフセット (ラジアン)</span>
+      <span class="hljs-type">float</span> padding0;        <span class="hljs-comment">// ⬇ 16バイト境界に揃えるための空き</span>
+      <span class="hljs-type">float</span> padding1;        <span class="hljs-comment">//</span>
+      <span class="hljs-type">float</span> padding2;        <span class="hljs-comment">// ⬆ paddingがないと値がずれて正しく動かない</span>
+      Vector4 gaugeColor;    <span class="hljs-comment">// ゲージ部分の色 (RGBA)</span>
+      Vector4 bgColor;       <span class="hljs-comment">// 背景リング部分の色 (RGBA)</span>
+   }; 
+
+</div></code></pre>
+<pre class="hljs"><code><div>   <span class="hljs-comment">// ② ゲームの状態に応じてマイフレーム書き換え</span>
+   <span class="hljs-type">const</span> <span class="hljs-type">float</span> rotRatio = m_currentTime / m_status-&gt;<span class="hljs-built_in">GetDegreeValue</span>();
+   circleGaugeA-&gt;<span class="hljs-built_in">SetProgress</span>(rotRatio,<span class="hljs-number">1.0f</span>);
+</div></code></pre>
+<pre class="hljs"><code><div>   <span class="hljs-comment">// ③ Update()で丸ごとGPUへ送信</span>
+   <span class="hljs-built_in">UpdateConstantBuffer</span>(&amp;m_gaugeCb,<span class="hljs-built_in">sizeof</span>(m_gaugeCb),<span class="hljs-number">1</span>);
+</div></code></pre>
+<pre class="hljs"><code><div>   // ④ シェーダー側で受け取る
+   cbuffer Gaugecb : register(b1)
+   {
+      float g_startProgress; 
+      float g_endProgress; 
+      float g_innerRadius; 
+      float g_outerRadius; 
+      float g_rotationAngle; 
+      float g_padding0; 
+      float g_padding1; 
+      float g_padding2; 
+      float4 g_gaugeColor; 
+      float4 g_bgColoc; 
+   }
+</div></code></pre>
+<p><strong>④ 折り返し描画への対応</strong><br>
+開始位置が終了位置より大きくなる折り返しのケース（例：270°→90°）でも正しく描画できるよう、判定ロジックを分岐させています。</p>
+<p><strong>⑤ 16バイトアライメントを意識した定数バッファ設計</strong><br>
+シェーダーへ値を渡す定数バッファでは、<code>padding</code>で空きを明示的に埋め16バイト境界に揃えています。GPUのメモリルールを守らないと値がずれて正しく動作しないため、その仕組みを理解した上で対応しています。</p>
+<hr>
+<br>
+<br>
+<h1 id="6-uiのこだわりポイント"><strong>6. UIのこだわりポイント</strong></h1>
+<h2 id="minimap"><strong>MiniMap</strong></h2>
+<img src="MiniMap.gif" alt="MiniMap" width="600" height="400">
+<p>子ペンギンの救出がゲームの鍵となるため、プレイヤーが迷わず動けるようにミニマップを実装しました。<br>
+3D空間上の座標を2D座標に変換する処理を独自に実装しています。</p>
+<p><strong>① 3D座標から2D座標への変換</strong><br>
+ゲーム内の各オブジェクトのワールド座標を<code>WorldPosConverterToMapPos()</code>で取得し、ミニマップ上の座標に変換しています。Y軸（高さ）を除いた水平面の差分ベクトルを元に、マップの中心からの位置を算出しています。</p>
+<p><strong>② カメラの向きに連動した回転</strong><br>
+<code>MapFrameRotation()</code>でカメラの向きを取得し、<code>atan2</code>で角度を計算してミニマップのフレームとマップ画像を回転させています。プレイヤーが向いている方向が常にマップの上になるため、直感的に方向を把握できます。</p>
+<p><strong>③ 円の範囲外のオブジェクトを非表示にする</strong><br>
+ミニマップは円形のため、一定距離（<code>GetLimitDistance()</code>）より外にいるオブジェクトは<code>WorldPosConverterToMapPos()</code>が<code>false</code>を返して非表示になります。マップの枠外に変なアイコンが飛び出さないようになっています。</p>
+<!-- 1つ目の画像(範囲内) -->
+<div align="center">
+  <h3> 範囲内</h3>
+  <img src="MiniMapInRange.gif" width="540" height="300">
+</div>
+<br>
+<br>
+<div align="center">
+  <h3> 範囲外</h3>
+  <img src="MiniMapOutofRange.gif" widht="270" height="280">
+<div>
+<br>
+<br>
+<p><strong>④ オブジェクトの種類ごとにアイコンを色分け</strong><br>
+子ペンギン・シロクマ・渦潮・イグルー・シロクマの巣それぞれに専用アイコンを用意し、ユーザーが一目で何がどこにいるかわかるようにしています。子ペンギンはさらに性格のタイプ（まじめ・おっちょこちょい・甘えん坊・やんちゃ・世話焼き）ごとに色分けしたアイコンで表示しています。</p>
+<p><strong>⑤ 使われなかったアイコンを確実に非表示にする</strong><br>
+シロクマや渦潮などは複数体いるため、アイコンをあらかじめ配列で用意しています。表示に使われなかったアイコンはループ後に<code>m_isDraw = false</code>で確実に非表示にすることで、前フレームの情報が残って余分なアイコンが表示されるバグを防いでいます。</p>
+<hr>
+<br>
+<h2 id="soundoptionmenu"><strong>SoundOptionMenu</strong></h2>
+<img src="SoundOption.gif" alt=SoundOption width="600" height="400">
+<p>マスター・BGM・SE・ボイスそれぞれの音量を個別に調整できるサウンド設定画面を実装しました。<br>
+プレイヤーが直感的に操作できるよう、UIのわかりやすさにこだわっています。</p>
+<p><strong>① 4種類の音量を個別に調整できる</strong><br>
+<code>SoundType</code>列挙型でマスター・ボイス・SE・BGMを管理し、上下キーで選択中の種類を切り替え、左右キーでノブアイコンをスライドさせて音量を調整します。変更はそのまま<code>SoundManager</code>に反映されるため、調整しながら即座に音の変化を確認できます。</p>
+<p><strong>② 選択フレームの点滅アニメーションでユーザーフレンドリーに</strong><br>
+現在選択中の項目のフレームには<code>PingPong</code>ループの<code>UIColorAnimation</code>が再生され、白色↔半透明の点滅アニメーションが流れます。非選択の項目はアニメーションを停止して白色に戻すため、どの項目を操作しているかが一目でわかります。</p>
+<p><strong>③ 音量をリセットできるXボタン対応</strong><br>
+Xボタンを押すと全種類の音量とノブ位置を初期値（0.1）に一括リセットします。変更後に元に戻したいときに手間なく対応できます。</p>
+<p><strong>④ シーン遷移をまたいでも設定が維持される</strong><br>
+初期化時にノブ位置とDigit表示を<code>SoundManager</code>の現在値から取得して設定しています。一度調整した音量がシーン切り替え後も画面に正しく反映されます。</p>
+<p><strong>⑤ 音量とノブ座標の変換を定数で一元管理</strong><br>
+ノブの左端・右端の座標（<code>LEFT_LIMITE</code>・<code>RIGHT_LIMITE</code>）と音量（0.0〜1.0）の対応関係を<code>VolumeToKnobPosX()</code>で変換しており、ノブ座標の計算ロジックが一箇所にまとまっています。座標の調整が必要になった時も定数を変えるだけで対応できます。</p>
+<hr>
+<br>
+<h2 id="countdown"><strong>CountDown</strong></h2>
+<img src="CountDown.gif" alt="CountDown" width="600" height="400">
+<p>インゲームが即座に開始されないよう、カウントダウンを実装しました。<br>
+プレイヤーにゲームスタートを意識させ、ゲームが始まるワクワク感を演出しています。<br>
+単純にカウントを進めるだけでは味気ないと感じたため、細部のアニメーションにこだわることでゲームの質を高めています。</p>
+<p><strong>① 3・2・1とGOで異なるアニメーション演出</strong><br>
+3・2・1はフェードアウトのみのシンプルな演出で緊張感を演出し、GOだけは「0スケールから拡大しながら出現 → フェードアウト」という2段階のアニメーションで一気に弾けるような演出にしています。数字とGOで意図的に見せ方を変え、ゲームスタートの気持ちよさを表現しています。</p>
+<p><strong>② 状態が切り替わった瞬間にアニメーションを再生</strong><br>
+毎フレーム<code>previewType</code>と<code>m_currentCountType</code>を比較しており、カウントが変わった瞬間だけ<code>PlayAnimation()</code>を呼び出しています。状態変化を検知してアニメーションをトリガーする設計のため、同じアニメーションが二重再生されることがありません。</p>
+<p><strong>③ 開始前のディレイ機能</strong><br>
+<code>SetIsDelay(true)</code>を呼ぶと一定時間（4.5秒）の待機後にカウントダウンが自動で始まります。ゲーム開始のタイミングを外部から制御できるため、演出や他の処理と組み合わせやすい設計です。</p>
+<hr>
+<p><a href="#%E7%9B%AE%E6%AC%A1"><strong>目次にもどる</strong></a></p>
+
+</body>
+</html>
