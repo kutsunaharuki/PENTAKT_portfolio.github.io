@@ -295,6 +295,7 @@ UnrealEngineのナイアガラを参考にJSONの値を変えるだけで生成�
         "burstInterval":0.8,
         "looping": false
     }
+}
 ```
 
 **② 4つの値供給モードでの値の決定**

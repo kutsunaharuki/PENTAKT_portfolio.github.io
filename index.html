@@ -382,6 +382,7 @@ code {
 <li>UIAnimation &amp; Curve</li>
 <li>UIAnimationSeqeunce</li>
 <li>CircleGauge</li>
+<li>2Dエフェクト</li>
 </ul>
 </li>
 <li><a href="#6-UI%E3%81%AE%E3%81%93%E3%81%A0%E3%82%8F%E3%82%8A%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88"><strong>6. UIのこだわりポイント</strong></a>
@@ -538,6 +539,16 @@ code {
 <ul>
 <li>Curve</li>
 </ul>
+<h3 id="vfx"><strong>Vfx</strong></h3>
+<ul>
+<li>HomingParticleRender</li>
+<li>Particle</li>
+<li>ParticleEffectLoader</li>
+<li>ParticleEffectRender</li>
+<li>ParticleEmitter</li>
+<li>ParticleModule</li>
+<li>ParticleValueProvider</li>
+</ul>
 <h3 id="shader"><strong>Shader</strong></h3>
 <ul>
 <li>Circlegauge</li>
@@ -658,6 +669,29 @@ UIの配置・サイズ・カラーといったパラメーターはすべてJSO
 シェーダーへ値を渡す定数バッファでは、<code>padding</code>で空きを明示的に埋め16バイト境界に揃えています。GPUのメモリルールを守らないと値がずれて正しく動作しないため、その仕組みを理解した上で対応しています。</p>
 <hr>
 <br>
+<h2 id="2dエフェクト"><strong>2Dエフェクト</strong></h2>
+<p>UnrealEngineのナイアガラを参考にJSONの値を変えるだけで生成数・速度・寿命やイージングといったパーティクルの見た目を細かく調整できる2Dエフェクトを実装しました。</p>
+<p><strong>① JSONの値変更時のパーティクル生成・見た目・動きの調整</strong>
+生成レートや生成位置の範囲や速度、寿命に応じた透明度の変化などのパラメーターをすべてJSONで管理しています。</p>
+<pre class="hljs"><code><div><span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;comment&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;子ペンギンからUIへ吸い込まれる光&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;duration&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1.0</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;spawn&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+        <span class="hljs-attr">&quot;maxParticles&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">5</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">&quot;burstCount&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">5</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">&quot;burstInterval&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-number">0.8</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">&quot;looping&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span>
+    <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</div></code></pre>
+<p><strong>② 4つの値供給モードでの値の決定</strong>
+値供給モードにはFixed(固定値)、Random(最小から最大の範囲でランダム)、Curve(開始から終了をイージング)、RandomCurve(ランダムで決定した開始値から終了値をイージング)の4モードを保持しており、JSON側でmodeを切り替えるだけで値を自由に決定できます。</p>
+<p><strong>③ 機能ごとのモジュールをJSONで自由に組み合わせ</strong>
+InitVelocity・ScaleOverLife・AlphaOverLife・Accelerationなど、パーティクルの挙動を機能ごとに独立したモジュールに分けており、JSON側のmodules配列に使いたいtypeを並べるだけで演出を組み立てられます。演出を追加したり削除したいときもJSON側で編集するだけで済みます。</p>
+<p><strong>④ ホットリロードの運用によるイテレーション効率の効率化</strong>
+ParticleEffectRenderがJSONファイルの更新時間を監視し、変更を検知するとReload()が呼び出されます。これによりデバック時にも生成位置や生成数をゲームを閉じずに動的に変更ができます。</p>
+<p><strong>⑤ 収束の演出を応用した追加エフェクト</strong>
+ConvergenceOverLifeでは、寿命に応じた収束割合をJSON側のカーブ指定で変化させながらパーティクルをエミッター位置へ引き寄せる演出を実装しています。この仕組みを応用し、3Dワールド座標からUIへパーティクルが吸い込まれるように見えるHomingParticleRenderも作成しました。</p>
 <br>
 <h1 id="6-uiのこだわりポイント"><strong>6. UIのこだわりポイント</strong></h1>
 <h2 id="minimap"><strong>MiniMap</strong></h2>
@@ -706,7 +740,7 @@ Xボタンを押すと全種類の音量とノブ位置を初期値（0.1）に�
 <hr>
 <br>
 <h2 id="countdown"><strong>CountDown</strong></h2>
-<img src="CountDown.gif" alt="CountDown" width="600" height="400">
+<img src="countDown.gif" width="600" height="400">
 <p>インゲームが即座に開始されないよう、カウントダウンを実装しました。<br>
 プレイヤーにゲームスタートを意識させ、ゲームが始まるワクワク感を演出しています。<br>
 単純にカウントを進めるだけでは味気ないと感じたため、細部のアニメーションにこだわることでゲームの質を高めています。</p>
