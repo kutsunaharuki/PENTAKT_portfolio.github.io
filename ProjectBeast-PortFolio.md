@@ -15,6 +15,7 @@
   - UIAnimation & Curve
   - UIAnimationSeqeunce
   - CircleGauge
+  - 2Dエフェクト
 - [**6. UIのこだわりポイント**](#6-UIのこだわりポイント)
   - MiniMap
   - SoundOption
@@ -103,6 +104,14 @@
   - SearchParameter
 ### **Util**
   - Curve
+### **Vfx**
+  - HomingParticleRender
+  - Particle
+  - ParticleEffectLoader
+  - ParticleEffectRender
+  - ParticleEmitter
+  - ParticleModule
+  - ParticleValueProvider
 ### **Shader**
   - Circlegauge
 
@@ -268,6 +277,38 @@ Curve（イージング曲線）を用いた汎用テンプレートにするこ
 
 ---
 <br>
+
+## **2Dエフェクト**
+
+UnrealEngineのナイアガラを参考にJSONの値を変えるだけで生成数・速度・寿命やイージングといったパーティクルの見た目を細かく調整できる2Dエフェクトを実装しました。
+
+**① JSONの値変更時のパーティクル生成・見た目・動きの調整**
+生成レートや生成位置の範囲や速度、寿命に応じた透明度の変化などのパラメーターをすべてJSONで管理しています。
+
+```json
+{
+    "comment": "子ペンギンからUIへ吸い込まれる光",
+    "duration": 1.0,
+    "spawn": {
+        "maxParticles": 5,
+        "burstCount": 5,
+        "burstInterval":0.8,
+        "looping": false
+    }
+```
+
+**② 4つの値供給モードでの値の決定**
+値供給モードにはFixed(固定値)、Random(最小から最大の範囲でランダム)、Curve(開始から終了をイージング)、RandomCurve(ランダムで決定した開始値から終了値をイージング)の4モードを保持しており、JSON側でmodeを切り替えるだけで値を自由に決定できます。
+
+**③ 機能ごとのモジュールをJSONで自由に組み合わせ**
+InitVelocity・ScaleOverLife・AlphaOverLife・Accelerationなど、パーティクルの挙動を機能ごとに独立したモジュールに分けており、JSON側のmodules配列に使いたいtypeを並べるだけで演出を組み立てられます。演出を追加したり削除したいときもJSON側で編集するだけで済みます。
+
+**④ ホットリロードの運用によるイテレーション効率の効率化**
+ParticleEffectRenderがJSONファイルの更新時間を監視し、変更を検知するとReload()が呼び出されます。これによりデバック時にも生成位置や生成数をゲームを閉じずに動的に変更ができます。
+
+**⑤ 収束の演出を応用した追加エフェクト**
+ConvergenceOverLifeでは、寿命に応じた収束割合をJSON側のカーブ指定で変化させながらパーティクルをエミッター位置へ引き寄せる演出を実装しています。この仕組みを応用し、3Dワールド座標からUIへパーティクルが吸い込まれるように見えるHomingParticleRenderも作成しました。
+
 <br>
 
 # **6. UIのこだわりポイント**  
@@ -356,6 +397,5 @@ Xボタンを押すと全種類の音量とノブ位置を初期値（0.1）に�
 `SetIsDelay(true)`を呼ぶと一定時間（4.5秒）の待機後にカウントダウンが自動で始まります。ゲーム開始のタイミングを外部から制御できるため、演出や他の処理と組み合わせやすい設計です。
 
 ---
-
 
 [**目次にもどる**](#目次)
